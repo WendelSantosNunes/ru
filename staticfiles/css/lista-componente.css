@@ -1,0 +1,73 @@
+
+#container-contents #enviar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#container-contents #enviar #a{
+  text-decoration: none;
+
+  max-width: 8.5rem;
+  width: 100%;
+  margin: 0 10px;
+  padding: 0.6rem 0;
+
+  
+  background-color: var(--button);
+  color: var(--background);
+  font-size: 1rem;
+  
+  border: 0.0625rem solid var(--button);
+  border-radius: 50px;
+  cursor: pointer;
+ 
+  text-align: center;
+
+  font-size: 1.3rem;
+}
+
+#container-contents #enviar #a{
+  background-color: #f48631;;
+}
+
+#container-contents #enviar #a:hover{
+  background-color: #3b4092;
+}
+
+
+/* #container-contents #enviar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+/* 
+#container-contents #enviar #a,#container-contents #enviar #b{
+  text-decoration: none;
+
+  max-width: 12.5rem;
+  width: 100%;
+  margin: 0 10px;
+  padding: 1rem 0;
+
+  
+  background-color: var(--button);
+  color: var(--background);
+  font-size: 1rem;
+  
+  border: 0.0625rem solid var(--button);
+  border-radius: 8px;
+  cursor: pointer;
+ 
+  text-align: center;
+
+  font-size: 1.3rem;
+}
+
+#container-contents #enviar #a:hover{
+  background-color: red;
+}
+
+#container-contents #enviar #b:hover{
+  background-color: blue;
+} */
