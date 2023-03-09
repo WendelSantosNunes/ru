@@ -1,0 +1,50 @@
+{% extends 'main/base.html' %}
+
+
+{% load static%}
+
+{% block links %}
+    
+<link rel="stylesheet" href={% static 'css/login.css'%}>
+
+<title>RU-UFPI</title>
+
+{% endblock links %}    
+
+{% block header %}
+{% endblock header %}
+
+
+{% block main %}
+<main class="container">   
+    <div id="main-contents">
+        <div id="container-contents">
+            {% if not request.user.is_authenticated %}
+
+            <form action="" method="POST"  >
+                {% csrf_token %}
+                {{form.as_p}}
+               
+                <div id="enviar">
+                    <button type="submit">Entrar</button>
+                </div>
+            </form>
+            {% else %}
+                <h3>Ação não permitida</h3>
+
+                <p>Houve algum problema para processar a ação desejada ou você não tem permissão para isso.</p>
+{% comment %}             
+            <div id="login">    
+                <h3>Login</h3>
+            </div> {% endcomment %}
+            
+            {% endif %}
+        </div>
+    </div>
+</main>
+
+{% endblock main %}
+
+{% block footer %}
+
+{% endblock footer %}

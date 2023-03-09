@@ -1,0 +1,219 @@
+{% load static %} 
+{% load bootstrap %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="img/logo.png" rel="icon">
+  <link href="aimg/logo.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Amatic+SC:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href={% static 'vendor/bootstrap/css/bootstrap.min.css' %} rel="stylesheet">
+  <link href={% static 'vendor/bootstrap-icons/bootstrap-icons.css' %} rel="stylesheet">
+  <link href={% static 'vendor/aos/aos.css' %} rel="stylesheet">
+  <link href={% static 'vendor/glightbox/css/glightbox.min.css' %} rel="stylesheet">
+  <link href={% static 'vendor/swiper/swiper-bundle.min.css' %} rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href={% static '/css/main.css' %} rel="stylesheet">
+
+  {% block links %}
+        
+  {% endblock links %}  
+
+  <title>RU UFPI</title>
+</head>
+
+<body>    
+    {% block header %}
+    <header id="header" class="header fixed-top d-flex align-items-center">
+      <div class="container d-flex align-items-center justify-content-between">
+  
+        <a href="/" class="logo d-flex align-items-center me-auto me-lg-0">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <img src={% static 'img/logo.png' %} alt="">
+          <!-- <h1>Yummy<span>.</span></h1> -->
+        </a>
+  
+        <nav id="navbar" class="navbar">
+          <ul>
+            {% if request.user.is_authenticated %}
+              <li class="dropdown"><a href="#"><span>Cardápio</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                <ul>
+                  <li><a href={% url 'lista-cardapio' %}>Listagem</a></li>
+                  <li><a href={% url 'criar-cardapio' %}>Adicionar Novo</a></li>
+                </ul>
+              </li>
+                <li class="dropdown"><a href="#"><span>Componente</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                  <ul>
+                    <li><a href={% url 'lista-componente' %}>Listagem</a></li>
+                    <li><a href={% url 'criar-componente' %}>Adicionar Novo</a></li>
+                  </ul>
+                </li>
+                {% comment %} <li><a href={% url 'lista-componente' %}>Componente</a></li> {% endcomment %}
+                {% comment %} <li><a href="#">Comentário</a></li> {% endcomment %}
+                <li class="dropdown"><a href="#"><span>Refeições Servidas</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                  <ul>
+                    <li><a href={% url 'qtdrefeicao' %}>Listagem</a></li>
+                    <li><a href={% url 'criar-qtdrefeicao' %}>Adicionar Novo</a></li>
+                  </ul>
+                </li>
+
+               
+                {% else %}
+                  <li><a href="#about">Sobre</a></li>
+                  <li><a href="#menu">Cardápio</a></li>
+                  {% comment %} <li><a href={% url 'criar-comentario' %}>Nos ajude a melhorar</a></li> {% endcomment %}
+              {% endif %}
+          </ul>
+        </nav><!-- .navbar -->
+  
+        {% if request.user.is_authenticated %}
+          <div>                    
+            <a href={% url 'logout' %} class="btn-book-a-table primary">
+              Sair
+            </a>
+          </div>
+                
+        {% else %}
+                    
+          <div class="user">
+            <div class="login ">
+              <a href={% url 'login' %} class="btn-book-a-table primary">Entrar</a>
+            </div>
+          </div>
+        
+          {% endif %}
+
+        <!-- <a class="btn-book-a-table primary" href="/funcionario/login">Entrar</a> -->
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+  
+      </div>
+    </header>
+
+    {% endblock header %}
+    
+        
+    {% block main %}
+        
+        
+    {% endblock main %} 
+
+    
+    {% block footer %}
+        
+      <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="container">
+      <div class="row gy-3">
+        <div class="col-lg-3 col-md-6 d-flex">
+          <i class="bi bi-geo-alt icon"></i>
+          <div>
+            <h4>Rua </h4>
+            <p>
+              R. Cícero Duarte, 360, Picos - PI, 64600-000 <br>      
+            </p>
+          </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links d-flex">
+          <i class="bi bi-telephone icon"></i>
+          <div>
+            <h4>Contatos</h4>
+            <p>
+              <strong>Telefone:</strong> (89) 00000-0000<br>
+              <strong>E-mail:</strong> ufpi.cardapio@gmail.com<br>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links d-flex">
+          <i class="bi bi-clock icon"></i>
+          <div>
+            <h4>Horário de funcionamento</h4>
+            <p>
+              <strong>Seg~Sex:</strong>  11h-13h30 | 17h-19h<br>
+              <!-- Sunday: Closed -->
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Redes sociais</h4>
+          <div class="social-links d-flex">
+            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Cardápio RU - UFPI</span></strong>. Todos os direitos reservados
+      </div>
+    </div>
+
+  </footer><!-- End Footer -->
+
+
+    <footer>
+      
+    </footer>
+        <!-- Remove the container if you want to extend the Footer to full width. -->
+  {% comment %} 
+    <div class="container my-5">
+      <footer class="text-center text-lg-start" style="background-color: #db6930;">
+        <div class="container d-flex justify-content-center py-5">
+          <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #54456b;">
+            <i class="fab fa-facebook-f"></i>
+          </button>
+          <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #54456b;">
+            <i class="fab fa-youtube"></i>
+          </button>
+          <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #54456b;">
+            <i class="fab fa-instagram"></i>
+          </button>
+          <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #54456b;">
+            <i class="fab fa-twitter"></i>
+          </button>
+        </div>
+    
+        <!-- Copyright -->
+        <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          © 2020 Copyright:
+          <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+      
+    </div> 
+  {% endcomment %}
+  <!-- End of .container -->
+
+{% endblock footer %}
+
+</body>
+
+{% block script %}
+
+
+{% endblock script %} 
+</html>

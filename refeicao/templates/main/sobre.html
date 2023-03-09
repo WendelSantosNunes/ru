@@ -1,0 +1,78 @@
+{% extends 'main/base.html' %}
+
+{% load static %} 
+
+{% block links %}
+    
+<link rel="stylesheet" href={% static 'css/sobre.css'%}>
+<title>Se Liga UFPI</title>
+
+{% endblock links %}  
+
+{% block main %}
+<main class="container-content">    
+    <div class='part1'>
+        <div>
+            <div>
+                <p>
+                    Seja bem-vindo ao Cardápio RU - UFPI!
+                </p>
+            </div>
+            <p> 
+                Um local no qual é disponibilizado o cardápio do Restaurante Universitário (RU) da Universidade  
+                Federal do Piauí (UFPI), Campus Senador Helvídio Nunes de Barros (CSHNB). 
+                Além de apresentar as principais informações sobre as refeições e dias de funcionamento do nosso RU, 
+                aqui o usuário do RU pode contribuir com a melhoria dos serviços oferecidos através de comentários 
+                contendo elogios, críticas ou sugestões.
+            </p>
+        </div>
+        <img src={% static 'img/imagem1.png'%} alt="Imagem da UFPI">
+        <img src={% static 'img/imagem2.png'%} alt="Imagem da UFPI">
+    </div>
+    
+    <div class="part2">
+        <p>
+            O Cardápio RU - UFPI foi criado como requisito na disciplina de Projeto e Desenvolvimento de Sistemas II (PDSI II) 
+            do curso de Sistemas de Informação e sob orientação do professor Antônio Oséas de Carvalho Filho. 
+        </p>
+        <p>     
+            Vamos conhecer um pouco mais sobre nosso amado RU!
+        </p>
+    </div>
+
+    <div class='part3'>
+        {% comment %} <img src={% static 'img/imagem3.png'%} alt="Imagem da UFPI">
+        <img src={% static 'img/imagem4.png'%} alt="Imagem da UFPI"> {% endcomment %}
+    </div>
+
+    <div class='part4'>
+        <p>
+            O Restaurante Universitário (RU) da Universidade Federal do Piauí (UFPI) da cidade de Picos, 
+            Campus Senador Helvídio Nunes de Barros (CSHNB) foi inaugurado em novembro de 2011. 
+            É direcionado exclusivamente para a comunidade Ufpiana, entre os usuários 
+            estão os estudantes, servidores efetivos, terceirizados e contratados.
+        </p>
+
+        <p>
+            Seu horário de funcionamento para o almoço de segunda à sábado das 11h às 13:30hs, 
+            e para o jantar de segunda à sexta das 17h às 19hs. Ao se considerar apenas os 
+            estudantes como usuários do RU contabilizam mais de 2 mil pessoas, ou seja, 
+            há uma grande demanda de refeições diárias para o  restaurante. 
+        </p>
+    </div>
+
+    <div class='part3'>
+        <img src={% static 'img/imagem5.png'%} alt="Imagem da UFPI">
+        <img src={% static 'img/imagem6.png'%} alt="Imagem da UFPI"> 
+    </div>
+
+    <div>
+        <p>
+            Fontes: 
+        </p>
+        <a href="http://www.ufpi.br/sobre-picos"> História do CSHNB </a>
+        <a href="https://www.instagram.com/1berto_junior/?next=%2F"> Imagens by @1berto_junior </a>
+    </div>
+</main>
+
+{% endblock main %}

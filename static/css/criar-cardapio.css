@@ -1,0 +1,13 @@
+.container-eva{
+  width: 100%;
+  display: flex;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media(max-width: 767px){
+  
+  .container-eva{
+    grid-template-columns: 1fr;
+  }
+}

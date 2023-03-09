@@ -1,0 +1,78 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+
+{% load bootstrap %}
+{% load static%}
+
+{% block links %}
+<link rel="stylesheet" href={% static 'css/lista-cardapio.css'%}>
+    
+{% endblock links %}    
+
+{% block main %}
+<main class="container">   
+    <div id="main-contents" class="hero">
+        <div id="container-contents">
+            {% if request.user.is_authenticated %}
+
+            <form action="" method="POST">
+                <div class="container-eva">
+                   <ul >   
+                    {% for cardapio in listaCardapios %}
+                        {%if cardapio.funciona%}
+                            {%if cardapio.tem_almoco%}
+                                <h4>Dia {{cardapio.data}}</h4>
+                                <h2> Almoço</h2>
+                                {% for componente in cardapio.almoco.all %}
+                                    <p>{{ componente.decricao }}</p>
+                                {% endfor %}
+                                
+                                <h2> Almoço Vegano</h2>
+                                {% for componente in cardapio.almocoVeg.all %}
+                                    <p>{{ componente.decricao }}</p>
+                                {% endfor %}
+                                
+                            {% endif %}
+                            
+                            {% if cardapio.tem_jantar %}
+                                <h2> Jantar </h2>
+                        
+                                {% for componente in cardapio.jantar.all %}
+                                    <p>{{ componente.decricao }}</p>
+                                {% endfor %}
+                    
+                                <h2> Jantar Vegano</h2>
+                    
+                                {% for componente in cardapio.jantarVeg.all %}
+                                    <p>{{ componente.decricao }}</p>                            
+                                {% endfor %}
+
+                            {% endif %}
+                        {% endif %}
+                                            
+                         <div id="enviar" class="text-center mt-4">
+                            <a href={% url 'atualizar-cardapio' cardapio.id %}>Editar</a>
+                            <a href={% url 'deletar-cardapio' cardapio.id %}>Excluir</a>
+                        </div>
+                    
+                    {% empty %}
+                        <li>Nenhum cardápio encontrado.</li>
+                    {% endfor%} 
+                   </ul>
+                </div>
+            </form>
+            {% else %}
+                <h3>Ação não permitida</h3>
+
+                <p>Houve algum problema para processar a ação desejada ou você não tem permissão para isso.</p>
+            
+            {% endif %}
+        </div>
+    </div>
+</main>
+
+{% endblock main %}
+
+{% block footer %}
+
+{% endblock footer %}

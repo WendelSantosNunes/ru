@@ -1,0 +1,53 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+
+{% load bootstrap %}
+{% load static%}
+
+{% block links %}
+{% comment %} <link rel="stylesheet" href={% static 'css/lista-componente.css'%}> {% endcomment %}
+<link rel="stylesheet" href={% static 'css/lista-cardapio.css'%}>
+{% comment %} <link rel="stylesheet" href={% static 'css/login.css'%}> {% endcomment %}
+
+{% endblock links %}    
+
+{% block main %}
+<main class="container">   
+    <div id="main-contents" class="hero">
+        <div id="container-contents">
+            {% if request.user.is_authenticated %}
+
+
+            <form action="" method="POST">
+                <div class="container-eva">
+                   <ul >   
+                    {% for qtd in listaQtdRefeicao %}
+                        <h2 class="title-componente">({{qtd.ano}}) {{qtd.mes}} Almoços = {{qtd.almocoQtd}}</h2>              
+                        <h2 class="title-componente">({{qtd.ano}}) {{qtd.mes}} Jantares = {{qtd.jantarQtd}}</h2>              
+          
+                         <div id="enviar" class="text-center mt-3 mb-3">
+                            <a id="a" href={% url 'atualizar-qtdrefeicao' qtd.id %} >Editar</a>
+                            
+                            <a id="a" href={% url 'deletar-qtdrefeicao' qtd.id %}>Excluir</a>
+                        </div>
+                    {% empty %}
+                        <li>Nenhum dado encontrado.</li>
+                    {% endfor%} 
+                   </ul>
+                </div>
+            </form>
+            {% else %}
+                <h3>Ação não permitida</h3>
+
+                <p>Houve algum problema para processar a ação desejada ou você não tem permissão para isso.</p>
+            
+            {% endif %}
+        </div>
+    </div>
+</main>
+
+{% endblock main %}
+
+{% block footer %}
+
+{% endblock footer %}
