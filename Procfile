@@ -1,1 +1,1 @@
-web: gunicorn projeto.wsgi --log-file -
+web: gunicorn cardapio.wsgi --log-file -
